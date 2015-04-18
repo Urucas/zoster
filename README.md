@@ -3,7 +3,7 @@ Deeplinking Scheme URL generator, tester for Android. In development.
 
 # Usage
 ```bash
-git clone https://github.com/Urucas/zoster && cd zoster
+git clone https://github.com/Urucas/zoster.git && cd zoster
 npm start
 ```
 
