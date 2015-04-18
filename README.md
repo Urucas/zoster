@@ -1,4 +1,4 @@
-# zoster
+# Zoster
 Deeplinking Scheme URL generator, tester for Android. In development.
 
 # Usage
