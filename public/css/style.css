@@ -1,0 +1,20 @@
+body{
+  margin:8px;  
+}
+
+textarea {
+   resize: none;
+}
+
+.content{
+  padding:10px;
+  border-left:1px solid #ddd;
+  border-right:1px solid #ddd;
+  margin-left:0px;
+  margin-right:0px;
+  border-bottom:1px solid #ddd;
+}
+
+.buttons{
+  margin-top:4px;
+}

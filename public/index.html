@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" ng-app="SchemeApp">
+<head>
+  <meta charset="utf-8">
+
+  <title>URL Scheme generator</title>
+  <meta name="description" content="your meta description">
+  <meta name="@urucas" content="Urucas">
+  
+  <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <script src="./angular/angular.min.js"></script>
+  <script src="./js/controller.js"></script>
+  
+</head>
+
+<body ng-controller="SchemeController">
+
+  <ul class="nav nav-tabs">
+    <li role="presentation" ng-class="platform == 'android' ? 'active' : '' "><a href="#android" ng-click="selectPlatform('android')">Android</a></li>
+    <li role="presentation" ng-class="platform == 'ios' ? 'active' : '' "><a href="#ios" ng-click="selectPlatform('ios')">iOS</a></li>
+  </ul>
+
+  <!-- android scheme generator -->
+  <div ng-if="platform == 'android'">
+    
+    <div class="row content">
+
+      <div class="col-md-4 col-sm-5 col-xs-12">
+        <form>
+          <div class="form-group">
+            <label for="scheme">Scheme</label>
+            <input type="text" class="form-control" id="scheme" placeholder="Enter scheme" ng-model="scheme">
+          </div>
+          <div class="form-group">
+            <label for="host">Host</label>
+            <input type="text" class="form-control" id="host" placeholder="Enter host" ng-model="host">
+          </div>
+          <div class="form-group">
+            <label for="action">Action</label>
+            <input type="text" class="form-control" id="action" placeholder="Enter action" ng-model="action">
+          </div>
+
+          <div class="form-group">
+            <label for="action">Package</label>
+            <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="package">
+          </div>
+
+
+          <div class="form-group">
+            <label>Params</label>
+            <div class="form-inline">
+              <input type="text" class="form-control" id="param[0][name]" placeholder="Enter param name">
+              <input type="text" class="form-control" id="param[0][value]" placeholder="Enter param value">
+              <button>+</button>
+            </div>  
+          </div>
+   
+        </form>
+      </div>
+
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <form>
+          <div class="form-group">
+            <label for="manifest">AndroidManifest.xml</label>
+            <div class="board">
+            &lt;intent-filter&gt;<br/>
+              &lt;action android:name="android.intent.action.VIEW" /&gt;<br />
+              &lt;category android:name="android.intent.category.DEFAULT" /&gt;<br />
+              &lt;category android:name="android.intent.category.BROWSABLE" /&gt;<br />
+              &lt;data android:scheme="{{scheme}}" android:host="{{host}}" /&gt;<br />
+            &lt;/intent-filter&gt;
+           </div>
+         </div>
+
+          <div class="form-group">
+            <label for="manifest">Link</label>
+            <div class="board">intent://{{scheme}}/{{action}}?rid=1#Intent;scheme={{scheme}};package={{package}};end</div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    
+  </div>
+  <!-- end android scheme generator -->
+  <!-- ios scheme generator -->
+  <div ng-if="platform == 'ios'">
+    <div class="row content">
+      <p>In construction (?)</p>
+    </div>
+  </div>
+  <!-- end ios scheme generator -->
+  <div class="clearfix"></div>
+  
+  <div class="form-inline buttons">
+    <button class="btn btn-primary" ng-click="validate()">Validate</button>
+    <button class="btn btn-primary" ng-click="test()">Run Test</button>
+  </div>
+
+</body>
+</html>
