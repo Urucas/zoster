@@ -11,15 +11,18 @@
   <link rel="stylesheet" href="./css/style.css">
 
   <script src="./angular/angular.min.js"></script>
-  <script src="./js/controller.js"></script>
+  <script src="./jquery/dist/jquery.min.js"></script>
+  <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
   
+  <script src="./js/controller.js"></script>
+
 </head>
 
 <body ng-controller="SchemeController">
 
   <ul class="nav nav-tabs">
     <li role="presentation" ng-class="platform == 'android' ? 'active' : '' "><a href="#android" ng-click="selectPlatform('android')">Android</a></li>
-    <li role="presentation" ng-class="platform == 'ios' ? 'active' : '' "><a href="#ios" ng-click="selectPlatform('ios')">iOS</a></li>
+    <li ng-hide="true" role="presentation" ng-class="platform == 'ios' ? 'active' : '' "><a href="#ios" ng-click="selectPlatform('ios')">iOS</a></li>
   </ul>
 
   <!-- android scheme generator -->
@@ -27,40 +30,43 @@
     
     <div class="row content">
 
-      <div class="col-md-4 col-sm-5 col-xs-12">
+      <div class="col-md-5 col-sm-5 col-xs-12">
         <form>
+
           <div class="form-group">
             <label for="scheme">Scheme</label>
-            <input type="text" class="form-control" id="scheme" placeholder="Enter scheme" ng-model="scheme">
+            <input type="text" class="form-control" id="scheme" placeholder="Enter scheme" ng-model="scheme" data-toggle="popover" data-placement="right" data-content="Please enter the url scheme">
           </div>
           <div class="form-group">
             <label for="host">Host</label>
-            <input type="text" class="form-control" id="host" placeholder="Enter host" ng-model="host">
+            <input type="text" class="form-control" id="host" placeholder="Enter host" ng-model="host" data-toggle="popover" data-placement="right" data-content="Please enter the url host">
           </div>
           <div class="form-group">
             <label for="action">Action</label>
-            <input type="text" class="form-control" id="action" placeholder="Enter action" ng-model="action">
+            <input type="text" class="form-control" id="action" placeholder="Enter action" ng-model="action" data-toggle="popover">
           </div>
 
           <div class="form-group">
             <label for="action">Package</label>
-            <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="package">
+            <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="package" data-toggle="popover" data-placement="right" data-content="Please enter your app package">
           </div>
 
 
           <div class="form-group">
-            <label>Params</label>
-            <div class="form-inline">
-              <input type="text" class="form-control" id="param[0][name]" placeholder="Enter param name">
-              <input type="text" class="form-control" id="param[0][value]" placeholder="Enter param value">
-              <button>+</button>
+            <label class="margin-6">Params</label><button class="btn btn-default right padding-plus" ng-click="addParam()">+</button>
+            <hr />
+            <div class="clearfix"></div>
+            <div class="form-inline" ng-repeat="param in params">
+              <input type="text" class="form-control" placeholder="Enter param name" value="{{param.name}}" ng-model="param.name">
+              <input type="text" class="form-control" placeholder="Enter param value" value="{{param.value}}" ng-model="param.value">
+              <button class="btn btn-default" ng-click=removeParam($index)>-</button>
             </div>  
           </div>
    
         </form>
       </div>
 
-      <div class="col-md-8 col-sm-7 col-xs-12">
+      <div class="col-md-7 col-sm-7 col-xs-12">
         <form>
           <div class="form-group">
             <label for="manifest">AndroidManifest.xml</label>
@@ -76,7 +82,7 @@
 
           <div class="form-group">
             <label for="manifest">Link</label>
-            <div class="board">intent://{{scheme}}/{{action}}?rid=1#Intent;scheme={{scheme}};package={{package}};end</div>
+            <div class="board">intent://{{scheme}}/{{action}}?{{params | stringify}}#Intent;scheme={{scheme}};package={{package}};end</div>
           </div>
         </form>
       </div>

@@ -18,3 +18,25 @@ textarea {
 .buttons{
   margin-top:4px;
 }
+
+.error {
+  padding:8px;
+  color:#800;
+}
+
+.right{
+  float:right;
+}
+
+.margin-6{
+  margin:6px;
+}
+
+.padding-plus{
+  padding:2px 6px !important;
+}
+
+hr {
+  margin-top:5px !important;  
+  margin-bottom:10px !important;
+}
