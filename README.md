@@ -1,2 +1,14 @@
 # zoster
-Deeplinking Scheme URL generator, tester for Android
+Deeplinking Scheme URL generator, tester for Android. In development.
+
+# Usage
+```bash
+git clone https://github.com/Urucas/zoster && cd zoster
+npm start
+```
+
+# Requirements
+* Appium
+* ADB
+
+<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen.png"/>
