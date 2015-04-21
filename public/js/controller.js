@@ -1,3 +1,5 @@
+var socket = io();
+
 angular.module('SchemeApp', [])
 
 .filter('stringify', function() {
@@ -17,52 +19,63 @@ angular.module('SchemeApp', [])
 
   $scope.platforms = ['android', 'ios'];
   $scope.platform  = 'android';
+  $scope.logs = [];
 
   $scope.selectPlatform = function(plt) {
     $scope.platform = plt == 'ios' ? 'ios' : 'android';
   }
   
-  $scope.scheme = "";
-  $scope.host = "";
-  $scope.package = "";
-  $scope.action = "";
-
-  $scope.params = [];
-
+  $scope.config = {
+    scheme : "raddios",
+    host : "raddios",
+    package: "com.raddios",
+    action: "play",
+    params : [{name:"rid", value:1}]
+  };
+  
   $scope.addParam = function() {
-    $scope.params.push({name:"", value:""});
-    console.table($scope.params);
+    $scope.config.params.push({name:"", value:""});
   }
 
   $scope.removeParam = function(i) {
-    $scope.params.splice(i,1);
+    $scope.config.params.splice(i,1);
   }
 
   $scope.test = function() {
-    
+    if(!$scope.validate()) {
+      return;
+    }
+    console.log(socket);
+    socket.emit("test", {config: $scope.config});
   }
 
   $scope.error = "";
   $scope.validate = function() {
     
     if($scope.platform == 'ios') {
-      return;
+      return false;
     }
 
-    if($scope.scheme == "") {
+    if($scope.config.scheme == "") {
       $q("#scheme").popover('show');
-      return; 
+      return false; 
     }
 
-    if($scope.host == "") {
+    if($scope.config.host == "") {
       $q("#host").popover('show');
-      return;
+      return false;
     }
 
-    if($scope.package == "") {
+    if($scope.config.package == "") {
       $q("#package").popover('show');
-      return;
+      return false;
     }
+
+    return true;
   }
+
+  socket.on("log", function(data){
+    console.log(data);
+  });
 
 }])

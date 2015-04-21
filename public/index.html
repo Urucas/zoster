@@ -13,8 +13,10 @@
   <script src="./angular/angular.min.js"></script>
   <script src="./jquery/dist/jquery.min.js"></script>
   <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="./socket.io/socket.io.js"></script>
   
   <script src="./js/controller.js"></script>
+
 
 </head>
 
@@ -35,20 +37,20 @@
 
           <div class="form-group">
             <label for="scheme">Scheme</label>
-            <input type="text" class="form-control" id="scheme" placeholder="Enter scheme" ng-model="scheme" data-toggle="popover" data-placement="right" data-content="Please enter the url scheme">
+            <input type="text" class="form-control" id="scheme" placeholder="Enter scheme" ng-model="config.scheme" data-toggle="popover" data-placement="right" data-content="Please enter the url scheme">
           </div>
           <div class="form-group">
             <label for="host">Host</label>
-            <input type="text" class="form-control" id="host" placeholder="Enter host" ng-model="host" data-toggle="popover" data-placement="right" data-content="Please enter the url host">
+            <input type="text" class="form-control" id="host" placeholder="Enter host" ng-model="config.host" data-toggle="popover" data-placement="right" data-content="Please enter the url host">
           </div>
           <div class="form-group">
             <label for="action">Action</label>
-            <input type="text" class="form-control" id="action" placeholder="Enter action" ng-model="action" data-toggle="popover">
+            <input type="text" class="form-control" id="action" placeholder="Enter action" ng-model="config.action" data-toggle="popover">
           </div>
 
           <div class="form-group">
             <label for="action">Package</label>
-            <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="package" data-toggle="popover" data-placement="right" data-content="Please enter your app package">
+            <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="config.package" data-toggle="popover" data-placement="right" data-content="Please enter your app package">
           </div>
 
 
@@ -56,7 +58,7 @@
             <label class="margin-6">Params</label><button class="btn btn-default right padding-plus" ng-click="addParam()">+</button>
             <hr />
             <div class="clearfix"></div>
-            <div class="form-inline" ng-repeat="param in params">
+            <div class="form-inline" ng-repeat="param in config.params">
               <input type="text" class="form-control" placeholder="Enter param name" value="{{param.name}}" ng-model="param.name">
               <input type="text" class="form-control" placeholder="Enter param value" value="{{param.value}}" ng-model="param.value">
               <button class="btn btn-default" ng-click=removeParam($index)>-</button>
@@ -75,14 +77,14 @@
               &lt;action android:name="android.intent.action.VIEW" /&gt;<br />
               &lt;category android:name="android.intent.category.DEFAULT" /&gt;<br />
               &lt;category android:name="android.intent.category.BROWSABLE" /&gt;<br />
-              &lt;data android:scheme="{{scheme}}" android:host="{{host}}" /&gt;<br />
+              &lt;data android:scheme="{{config.scheme}}" android:host="{{config.host}}" /&gt;<br />
             &lt;/intent-filter&gt;
            </div>
          </div>
 
           <div class="form-group">
-            <label for="manifest">Link</label>
-            <div class="board">intent://{{scheme}}/{{action}}?{{params | stringify}}#Intent;scheme={{scheme}};package={{package}};end</div>
+            <label for="manifest">URL Scheme</label>
+            <div class="board">intent://{{config.scheme}}/{{config.action}}?{{config.params | stringify}}#Intent;scheme={{config.scheme}};package={{config.package}};end</div>
           </div>
         </form>
       </div>
@@ -103,6 +105,10 @@
   <div class="form-inline buttons">
     <button class="btn btn-primary" ng-click="validate()">Validate</button>
     <button class="btn btn-primary" ng-click="test()">Run Test</button>
+  </div>
+
+  <div class="row">
+    <div id="console" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
   </div>
 
 </body>
