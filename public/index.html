@@ -50,7 +50,7 @@
 
           <div class="form-group">
             <label for="action">Package</label>
-            <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="config.package" data-toggle="popover" data-placement="right" data-content="Please enter your app package">
+            <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="config.pkg" data-toggle="popover" data-placement="right" data-content="Please enter your app package">
           </div>
 
 
@@ -84,7 +84,7 @@
 
           <div class="form-group">
             <label for="manifest">URL Scheme</label>
-            <div class="board">intent://{{config.scheme}}/{{config.action}}?{{config.params | stringify}}#Intent;scheme={{config.scheme}};package={{config.package}};end</div>
+            <div class="board">intent://{{config.scheme}}/{{config.action}}?{{config.params | stringify}}#Intent;scheme={{config.scheme}};package={{config.pkg}};end</div>
           </div>
         </form>
       </div>

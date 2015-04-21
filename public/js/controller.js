@@ -28,7 +28,7 @@ angular.module('SchemeApp', [])
   $scope.config = {
     scheme : "raddios",
     host : "raddios",
-    package: "com.raddios",
+    pkg: "com.raddios",
     action: "play",
     params : [{name:"rid", value:1}]
   };
@@ -45,8 +45,7 @@ angular.module('SchemeApp', [])
     if(!$scope.validate()) {
       return;
     }
-    console.log(socket);
-    socket.emit("test", {config: $scope.config});
+    socket.emit("test", $scope.config);
   }
 
   $scope.error = "";
@@ -66,7 +65,7 @@ angular.module('SchemeApp', [])
       return false;
     }
 
-    if($scope.config.package == "") {
+    if($scope.config.pkg == "") {
       $q("#package").popover('show');
       return false;
     }
