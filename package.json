@@ -6,8 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "make clean && make",
-    "start": "node bin/index"
+    "start": "node bin/index",
+    "install" : "make"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Urucas/zoster.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Urucas/zoster/issues"
+  },
+  "homepage": "https://github.com/Urucas/zoster",
   "author": "Urucas <hello@urucas.com>",
   "license": "MIT",
   "dependencies": {
