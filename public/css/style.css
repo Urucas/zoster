@@ -75,3 +75,17 @@ hr {
 .console span.gray{ color:#ddd; }
 .console span.green{ color: #090; }
 .console span.magenta{ color: magenta; }
+
+.label {
+  font-size:1em;
+  font-weight:normal;
+  padding-top:9px;
+  padding-bottom:9px;
+}
+
+.pri {
+  display: inline-block;
+  padding-top:10px;
+  padding-left:8px;
+  margin-right:18px;
+}

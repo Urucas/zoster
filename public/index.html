@@ -15,6 +15,7 @@
   <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="./socket.io/socket.io.js"></script>
   
+  <script src="./js/priloader.js"></script>
   <script src="./js/controller.js"></script>
 
 
@@ -105,11 +106,19 @@
   <div class="form-inline buttons">
     <button class="btn btn-primary" ng-click="validate()">Validate</button>
     <button class="btn btn-primary" ng-click="test()" ng-disabled="testing">Run Test</button>
+    <div id="priloader" ng-show="testing"></div>
+    <span class="label label-success" ng-show="testStatus == 1">Test OK <i class="glyphicon glyphicon-ok"></i></span>
+    <span class="label label-danger" ng-show="testStatus == -1">Test Failed <i class="glyphicon glyphicon-remove"></i></span>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="console"> Show console
+      </label>
+    </div>
   </div>
 
-  <div class="console">
+  <div class="console" ng-show="console == true">
     <p ng-repeat="log in logs">
-      <span class="green">test@zoster</span>
+      <span class="green">zoster</span>
       <span class="white">:~</span>
       <span class="magenta">$</span>
       <span class="gray">{{log.msg}}</span>

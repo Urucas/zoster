@@ -21,6 +21,17 @@ angular.module('SchemeApp', [])
   $scope.platform  = 'android';
   $scope.logs = [];
   $scope.testing = true;
+  $scope.console = false;
+  $scope.testStatus = 0;
+
+  var settings = {
+    size: 30,
+    bgColor: false,
+    speed: 3,
+    className: "pri",
+    color: "#337ab7"
+  }
+  var priloader = new Priloader("priloader", settings);
 
   $scope.selectPlatform = function(plt) {
     $scope.platform = plt == 'ios' ? 'ios' : 'android';
@@ -47,6 +58,9 @@ angular.module('SchemeApp', [])
       return;
     }
     $scope.testing = true;
+    $scope.console = true;
+    $scope.testStatus = 0;
+    priloader.start();
 
     $scope.config.intentURL = $q("#intentURL").text();
     
@@ -86,8 +100,26 @@ angular.module('SchemeApp', [])
   });
 
   socket.on("available for testing", function(){
+    priloader.stop();
     $scope.$apply(function(){
       $scope.testing = false;
+      $scope.testStatus = 0;
+    });
+  });
+
+  socket.on("test ok", function() {
+    priloader.stop();
+    $scope.$apply(function(){
+      $scope.testing = false;
+      $scope.testStatus = 1;
+    });
+  });
+  
+  socket.on("test failed", function() {
+    priloader.stop();
+    $scope.$apply(function(){
+      $scope.testing = false;
+      $scope.testStatus = -1;
     });
   });
 
