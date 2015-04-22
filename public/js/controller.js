@@ -20,6 +20,7 @@ angular.module('SchemeApp', [])
   $scope.platforms = ['android', 'ios'];
   $scope.platform  = 'android';
   $scope.logs = [];
+  $scope.testing = true;
 
   $scope.selectPlatform = function(plt) {
     $scope.platform = plt == 'ios' ? 'ios' : 'android';
@@ -30,7 +31,7 @@ angular.module('SchemeApp', [])
     host : "raddios",
     pkg: "com.raddios",
     action: "play",
-    params : [{name:"rid", value:1}]
+    params : [{name:"rid", value:1}],
   };
   
   $scope.addParam = function() {
@@ -45,6 +46,11 @@ angular.module('SchemeApp', [])
     if(!$scope.validate()) {
       return;
     }
+    $scope.testing = true;
+
+    $scope.config.intentURL = $q("#intentURL").text();
+    
+    $scope.logs = [];
     socket.emit("test", $scope.config);
   }
 
@@ -74,7 +80,15 @@ angular.module('SchemeApp', [])
   }
 
   socket.on("log", function(data){
-    console.log(data);
+    $scope.$apply(function(){
+      $scope.logs.push(data);
+    });
+  });
+
+  socket.on("available for testing", function(){
+    $scope.$apply(function(){
+      $scope.testing = false;
+    });
   });
 
 }])

@@ -84,7 +84,7 @@
 
           <div class="form-group">
             <label for="manifest">URL Scheme</label>
-            <div class="board">intent://{{config.scheme}}/{{config.action}}?{{config.params | stringify}}#Intent;scheme={{config.scheme}};package={{config.pkg}};end</div>
+            <div class="board" id="intentURL">intent://{{config.scheme}}/{{config.action}}?{{config.params | stringify}}#Intent;scheme={{config.scheme}};package={{config.pkg}};end</div>
           </div>
         </form>
       </div>
@@ -104,11 +104,16 @@
   
   <div class="form-inline buttons">
     <button class="btn btn-primary" ng-click="validate()">Validate</button>
-    <button class="btn btn-primary" ng-click="test()">Run Test</button>
+    <button class="btn btn-primary" ng-click="test()" ng-disabled="testing">Run Test</button>
   </div>
 
-  <div class="row">
-    <div id="console" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+  <div class="console">
+    <p ng-repeat="log in logs">
+      <span class="green">test@zoster</span>
+      <span class="white">:~</span>
+      <span class="magenta">$</span>
+      <span class="gray">{{log.msg}}</span>
+    </p>
   </div>
 
 </body>
