@@ -43,8 +43,7 @@ angular.module('SchemeApp', [])
     pkg: "com.urucas.zoster_testapp",
     action: "hello",
     params : [{name:"user", value:"vruno"}],
-    apk_upload: false,
-    apk: ""
+    apk_upload: false
   };
   
   $scope.addParam = function() {
@@ -62,18 +61,27 @@ angular.module('SchemeApp', [])
     $scope.testing = true;
     $scope.console = true;
     $scope.testStatus = 0;
-
-    if($scope.config.apk_upload) {
-      // TODO - upload .apk
-      return;
-    }
+      
+    $scope.config.intentURL = $q("#intentURL").text();
+    $scope.logs = [];
 
     priloader.start();
 
-    $scope.config.intentURL = $q("#intentURL").text();
-    
-    $scope.logs = [];
-    socket.emit("test", $scope.config);
+    schemeTest = function() {
+      socket.emit("test", $scope.config);
+    }
+
+    if($scope.config.apk_upload) {
+      $q("#upload-form").ajaxSubmit({
+        success: function(response) {
+          schemeTest(); 
+        }
+      });
+    }else {
+      schmeTest();
+    }
+
+   
   }
 
   $scope.error = "";

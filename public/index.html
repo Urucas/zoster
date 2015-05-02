@@ -12,6 +12,7 @@
 
   <script src="./angular/angular.min.js"></script>
   <script src="./jquery/dist/jquery.min.js"></script>
+  <script src="./js/jquery.form.min.js"></script>
   <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="./socket.io/socket.io.js"></script>
   
@@ -33,7 +34,6 @@
     <div class="row content">
 
       <div class="col-md-5 col-sm-5 col-xs-12">
-        <form>
 
           <div class="form-group">
             <label for="scheme">Scheme</label>
@@ -53,11 +53,13 @@
             <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="config.pkg" data-toggle="popover" data-placement="right" data-content="Please enter your app package">
           </div>
 
-          <div class="form-group" ng-hide="1">
+          <div class="form-group">
             <label for="action">APK</label>
             <div class="form-inline">
-              <input type="checkbox" id="apk_upload" ng-model="config.apk_upload" />
-              <input type="file" class="form-control" id="apk" ng-model="config.apk" ng-disabled="!config.apk_upload">
+              <form id="upload-form" class="form-inline" action="/upload" method="POST" enctype="multipart/form-data" />
+                <input type="checkbox" id="apk_upload" ng-model="config.apk_upload" />
+                <input type="file" class="form-control" ng-disabled="!config.apk_upload" name="{{config.pkg}}" />
+              </form>
             </div>
           </div>
 
@@ -72,11 +74,9 @@
             </div>  
           </div>
    
-        </form>
       </div>
 
       <div class="col-md-7 col-sm-7 col-xs-12">
-        <form>
           <div class="form-group">
             <label for="manifest">AndroidManifest.xml</label>
             <div class="board"><button id="manifest-copy-btt">Copy</button><span>
@@ -93,7 +93,6 @@
             <label for="manifest">URL Scheme</label>
             <div class="board" id="intentURL">intent://{{config.scheme}}/{{config.action}}?{{config.params | stringify}}#Intent;scheme={{config.scheme}};package={{config.pkg}};end</div>
           </div>
-        </form>
       </div>
 
     </div>
