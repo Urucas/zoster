@@ -38,11 +38,13 @@ angular.module('SchemeApp', [])
   }
   
   $scope.config = {
-    scheme : "raddios",
-    host : "raddios",
-    pkg: "com.raddios",
-    action: "play",
-    params : [{name:"rid", value:1}],
+    scheme : "zoster",
+    host : "zoster",
+    pkg: "com.urucas.zoster_testapp",
+    action: "hello",
+    params : [{name:"user", value:"vruno"}],
+    apk_upload: false,
+    apk: ""
   };
   
   $scope.addParam = function() {
@@ -60,6 +62,12 @@ angular.module('SchemeApp', [])
     $scope.testing = true;
     $scope.console = true;
     $scope.testStatus = 0;
+
+    if($scope.config.apk_upload) {
+      // TODO - upload .apk
+      return;
+    }
+
     priloader.start();
 
     $scope.config.intentURL = $q("#intentURL").text();
@@ -123,4 +131,5 @@ angular.module('SchemeApp', [])
     });
   });
 
-}])
+}]);
+

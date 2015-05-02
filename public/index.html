@@ -16,9 +16,8 @@
   <script src="./socket.io/socket.io.js"></script>
   
   <script src="./js/priloader.js"></script>
-  <script src="./js/controller.js"></script>
-
-
+  <script src="./zeroclipboard/dist/ZeroClipboard.min.js"></script>
+  
 </head>
 
 <body ng-controller="SchemeController">
@@ -54,6 +53,13 @@
             <input type="text" class="form-control" id="package" placeholder="Enter package(for ex.: com.urucas.myapp)" ng-model="config.pkg" data-toggle="popover" data-placement="right" data-content="Please enter your app package">
           </div>
 
+          <div class="form-group" ng-hide="1">
+            <label for="action">APK</label>
+            <div class="form-inline">
+              <input type="checkbox" id="apk_upload" ng-model="config.apk_upload" />
+              <input type="file" class="form-control" id="apk" ng-model="config.apk" ng-disabled="!config.apk_upload">
+            </div>
+          </div>
 
           <div class="form-group">
             <label class="margin-6">Params</label><button class="btn btn-default right padding-plus" ng-click="addParam()">+</button>
@@ -73,13 +79,13 @@
         <form>
           <div class="form-group">
             <label for="manifest">AndroidManifest.xml</label>
-            <div class="board">
+            <div class="board"><button id="manifest-copy-btt">Copy</button><span>
             &lt;intent-filter&gt;<br/>
               &lt;action android:name="android.intent.action.VIEW" /&gt;<br />
               &lt;category android:name="android.intent.category.DEFAULT" /&gt;<br />
               &lt;category android:name="android.intent.category.BROWSABLE" /&gt;<br />
               &lt;data android:scheme="{{config.scheme}}" android:host="{{config.host}}" /&gt;<br />
-            &lt;/intent-filter&gt;
+            &lt;/intent-filter&gt;</span>
            </div>
          </div>
 
@@ -124,6 +130,9 @@
       <span class="gray">{{log.msg}}</span>
     </p>
   </div>
+
+  <script src="./js/controller.js"></script>
+
 
 </body>
 </html>

@@ -89,3 +89,36 @@ hr {
   padding-left:8px;
   margin-right:18px;
 }
+
+.board{
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  padding:6px;
+  padding-left: 12px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+}
+
+.board span{
+  color:#2f6f9f;  
+}
+
+.board button{
+  display:none;
+  float:right;
+  background-color:#fff;
+  margin-top: -8px;
+  margin-right: -6px;
+  border:1px solid #ccc;
+  border-top:none;
+  border-right:none;
+  font-size:0.9em;
+  border-radius: 0px 0px 0px 5px;
+}
+
+.board button:hover{
+  background-color:#337ab7;
+  color:#fff;
+}
+
+
