@@ -11,4 +11,8 @@ npm start
 * Appium
 * ADB
 
-<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen.png"/>
+<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen.png?r=1234"/>
+
+#TODO
+* Let the user upload an apk
+* Port to iOS
