@@ -28,6 +28,8 @@
     "express": "^4.12.3",
     "internal-ip": "^1.0.0",
     "jquery": "^2.1.3",
+    "multer": "^0.1.8",
+    "node-idevice": "^0.1.5",
     "socket.io": "^1.3.5",
     "vd": "^0.6.0",
     "wd": "^0.3.11",
