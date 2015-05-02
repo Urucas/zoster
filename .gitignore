@@ -27,5 +27,6 @@ build/Release
 node_modules
 node
 
+tmp-apk
 
 .DS_Store
