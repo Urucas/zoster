@@ -1,20 +1,26 @@
 {
   "name": "zoster",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Android, ios, url schemes generator",
   "main": "bin/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "make clean && make",
     "start": "node bin/index",
     "install": "make"
   },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/Urucas/zoster.git"
   },
+  "bin": {
+    "zoster": "bin/index"
+  },
   "bugs": {
     "url": "https://github.com/Urucas/zoster/issues"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   },
   "homepage": "https://github.com/Urucas/zoster",
   "author": "Urucas <hello@urucas.com>",
