@@ -1,6 +1,6 @@
 {
   "name": "zoster",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Android, ios, url schemes generator",
   "main": "bin/index",
   "scripts": {
