@@ -6,3 +6,5 @@ app(port).listen(port, '0.0.0.0', function(err){
 });
 console.log("Server running on http://localhost:"+port);
 
+var open = require('child_process').spawn;
+open("open", ["http:/localhost:"+port]);
