@@ -30,3 +30,9 @@ node
 tmp-apk
 
 .DS_Store
+
+public/angular
+public/jquery
+public/socket.io
+public/bootstrap
+public/zeroclipboard
