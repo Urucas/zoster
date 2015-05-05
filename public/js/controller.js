@@ -67,18 +67,18 @@ angular.module('SchemeApp', [])
 
     priloader.start();
 
-    schemeTest = function() {
+    $scope.schemeTest = function() {
       socket.emit("test", $scope.config);
     }
 
     if($scope.config.apk_upload) {
       $q("#upload-form").ajaxSubmit({
         success: function(response) {
-          schemeTest(); 
+          $scope.schemeTest(); 
         }
       });
     }else {
-      schmeTest();
+      $scope.schemeTest();
     }
 
    
