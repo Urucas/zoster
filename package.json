@@ -1,12 +1,12 @@
 {
   "name": "zoster",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Android, ios, url schemes generator",
   "main": "bin/index",
   "scripts": {
-    "prestart": "make clean && make",
+    "prestart": "make clean && make node",
     "start": "node bin/index",
-    "install": "make"
+    "install": "make install && make node"
   },
   "preferGlobal": true,
   "repository": {
