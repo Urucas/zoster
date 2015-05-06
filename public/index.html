@@ -3,21 +3,27 @@
 <head>
   <meta charset="utf-8">
 
-  <title>URL Scheme generator</title>
+  <title>Zoster</title>
   <meta name="description" content="your meta description">
   <meta name="@urucas" content="Urucas">
   
-  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
 
-  <script src="angular/angular.min.js"></script>
-  <script src="jquery/dist/jquery.min.js"></script>
-  <script src="js/jquery.form.min.js"></script>
-  <script src="bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="socket.io/socket.io.js"></script>
+  <script>
+    window.$ = window.jQuery = require('jquery/dist/jquery.js');
+  </script>
+
+
+  <script src="/angular/angular.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   
-  <script src="js/priloader.js"></script>
-  <script src="zeroclipboard/dist/ZeroClipboard.min.js"></script>
+  <!-- script src="/jquery/dist/jquery.js"></script -->
+  <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/zeroclipboard/dist/ZeroClipboard.min.js"></script>
+  <script src="/js/jquery.form.min.js"></script>
+  
+  <script src="/js/priloader.js"></script>
   
 </head>
 
@@ -25,7 +31,7 @@
 
   <ul class="nav nav-tabs">
     <li role="presentation" ng-class="platform == 'android' ? 'active' : '' "><a href="#android" ng-click="selectPlatform('android')">Android</a></li>
-    <li ng-hide="true" role="presentation" ng-class="platform == 'ios' ? 'active' : '' "><a href="#ios" ng-click="selectPlatform('ios')">iOS</a></li>
+    <li role="presentation" ng-class="platform == 'ios' ? 'active' : '' "><a href="#ios" ng-click="selectPlatform('ios')">iOS</a></li>
   </ul>
 
   <!-- android scheme generator -->
@@ -102,7 +108,11 @@
   <!-- ios scheme generator -->
   <div ng-if="platform == 'ios'">
     <div class="row content">
-      <p>In construction (?)</p>
+
+
+      
+
+
     </div>
   </div>
   <!-- end ios scheme generator -->
@@ -130,7 +140,7 @@
     </p>
   </div>
 
-  <script src="js/controller.js"></script>
+  <script src="/js/controller.js"></script>
 
 
 </body>
