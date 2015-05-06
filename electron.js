@@ -3,6 +3,12 @@ var BrowserWindow = require('browser-window');
 
 var mainWindow = null;
 
+function quit(err) {
+  if(err) console.log(err);
+  mainWindow = null;
+  app.quit();
+}
+
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin')
     app.quit();
@@ -21,12 +27,7 @@ app.on('ready', function() {
   
   zoster(port).listen(port, '0.0.0.0', function(err){
       
-     if(err) {
-      console.log(err);
-      mainWindow = null;
-      app.quit();
-      return;
-    }
+    if(err) return quit(err);
     
     mainWindow.loadUrl(url);
     mainWindow.on('closed', function() {

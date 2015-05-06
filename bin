@@ -1,16 +1,25 @@
 #!/usr/bin/env node
-var exec = require("child_process").exec;
+var spawn = require("child_process").spawn;
 var platforms = {
-  darwin: "./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron ./ --verbose",
-  linux: "./node_modules/electron-prebuilt/dist/electron ./ --verbose",
-  win: ".\electron\electron.exe .\ --verbose"
+  darwin: {
+    prebuilt: "./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron",
+    params  : ["./", "--verbose"]
+  },
+  linux: {
+    prebuilt: "./node_modules/electron-prebuilt/dist/electron",
+    params  : ["./", "--verbose"]
+  },
+  win: {
+    prebuilt: ".\electron\electron.exe",
+    params  : [".\\", "--verbose"]
+  }
 }
-if(process.platform == "darwin") {
-  exec(platforms["darwin"]);
-}else if(process.platform == "linux") {
-  exec(platforms["linux"]);
-}else if(/^win/.test(process.platform)) {
-  exec(platforms["win"]);
-}else{
-  console.log("platform not supported");
-}
+
+var platform = null;
+if(process.platform == "darwin") { platform = platforms["darwin"]; }
+else if(process.platform == "linux") { platform = platforms["linux"]; }
+else if(/^win/.test(process.platform)) { platform = platforms["win"]; }
+
+if(platform) { spawn(platform.prebuilt, platform.params, {stdio:'inherit'}); }
+else { console.log("Platform not supported"); }
+

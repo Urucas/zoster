@@ -1,7 +1,7 @@
 {
   "name": "zoster",
-  "version": "0.1.0",
-  "description": "Android, ios, url schemes generator",
+  "version": "0.1.1",
+  "description": "Android, ios, url, deeplinking, test, appium, adb, electronjs, native, chromium",
   "main": "electron.js",
   "scripts": {
     "prestart": "make clean && make node",
