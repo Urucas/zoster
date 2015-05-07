@@ -1,9 +1,10 @@
 {
   "name": "zoster",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Android, ios, url, deeplinking, test, appium, adb, electronjs, native, chromium",
   "main": "electron.js",
   "scripts": {
+    "server": "make clean && make node && node server.js",
     "prestart": "make clean && make node",
     "start": "./bin",
     "install": "make install && make node"
