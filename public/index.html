@@ -10,9 +10,8 @@
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
 
-  <script>
-    window.$ = window.jQuery = require('jquery/dist/jquery.js');
-  </script>
+  <script>try { window.$ = window.jQuery = require('jquery/dist/jquery.min.js');}catch(e){}</script>
+  <script src="/jquery/dist/jquery.min.js"></script>
 
 
   <script src="/angular/angular.min.js"></script>
@@ -31,15 +30,15 @@
 
   <ul class="nav nav-tabs">
     <li role="presentation" ng-class="platform == 'android' ? 'active' : '' "><a href="#android" ng-click="selectPlatform('android')">Android</a></li>
-    <li role="presentation" ng-class="platform == 'ios' ? 'active' : '' "><a href="#ios" ng-click="selectPlatform('ios')">iOS</a></li>
+    <li role="presentation" ng-class="platform == 'ios' ? 'active' : '' " ng-hide="1"><a href="#ios" ng-click="selectPlatform('ios')">iOS</a></li>
   </ul>
 
   <!-- android scheme generator -->
-  <div ng-if="platform == 'android'">
+  <div>
     
     <div class="row content">
 
-      <div class="col-md-5 col-sm-5 col-xs-12">
+      <div class="col-md-5 col-sm-5 col-xs-12" ng-if="platform == 'android'">
 
           <div class="form-group">
             <label for="scheme">Scheme</label>
@@ -69,6 +68,12 @@
             </div>
           </div>
 
+          <div class="form-inline" ng-hide="1">
+            <input type="checkbox" id="apk_upload" ng-model="config.wait4sdkEvent" />
+            <label for="action">Wait for SDK event</label>
+          </div>
+
+
           <div class="form-group">
             <label class="margin-6">Params</label><button class="btn btn-default right padding-plus" ng-click="addParam()">+</button>
             <hr />
@@ -82,7 +87,56 @@
    
       </div>
 
+      <div class="col-md-5 col-sm-5 col-xs-12"  ng-if="platform == 'ios'"></div>
+
+
       <div class="col-md-7 col-sm-7 col-xs-12">
+        <div class="form-inline buttons">
+          <button class="btn btn-default" ng-click="useExample();">Use example</button>
+
+          <button class="btn btn-info" data-toggle="modal" data-target="#manifestModal">AndroidManifest.xml</button>
+          <button class="btn btn-primary" ng-click="test()" ng-disabled="testing">Run Test</button>
+          <div id="priloader" ng-show="testing"></div>
+          <span class="label label-success" ng-show="testStatus == 1">Test OK <i class="glyphicon glyphicon-ok"></i></span>
+          <span class="label label-danger" ng-show="testStatus == -1">Test Failed <i class="glyphicon glyphicon-remove"></i></span>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="console"> Show console
+            </label>
+          </div>
+        </div>
+
+        <div class="console" ng-show="console == true">
+          <p ng-repeat="log in logs">
+            <span class="green">zoster</span>
+            <span class="white">:~</span>
+            <span class="magenta">$</span>
+            <span class="gray">{{log.msg}}</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+  <!-- end android scheme generator -->
+  <!-- ios scheme generator -->
+    
+  <!-- end ios scheme generator -->
+  <div class="clearfix"></div>
+  
+ 
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="manifestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">&nbsp;</h4>
+        </div>
+        <div class="modal-body">
           <div class="form-group">
             <label for="manifest">AndroidManifest.xml</label>
             <div class="board"><button id="manifest-copy-btt">Copy</button><span>
@@ -92,52 +146,18 @@
               &lt;category android:name="android.intent.category.BROWSABLE" /&gt;<br />
               &lt;data android:scheme="{{config.scheme}}" android:host="{{config.host}}" /&gt;<br />
             &lt;/intent-filter&gt;</span>
-           </div>
-         </div>
-
+            </div>
+          </div>
           <div class="form-group">
             <label for="manifest">URL Scheme</label>
             <div class="board" id="intentURL">intent://{{config.scheme}}/{{config.action}}?{{config.params | stringify}}#Intent;scheme={{config.scheme}};package={{config.pkg}};end</div>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
-
     </div>
-    
-  </div>
-  <!-- end android scheme generator -->
-  <!-- ios scheme generator -->
-  <div ng-if="platform == 'ios'">
-    <div class="row content">
-
-
-      
-
-
-    </div>
-  </div>
-  <!-- end ios scheme generator -->
-  <div class="clearfix"></div>
-  
-  <div class="form-inline buttons">
-    <button class="btn btn-primary" ng-click="validate()">Validate</button>
-    <button class="btn btn-primary" ng-click="test()" ng-disabled="testing">Run Test</button>
-    <div id="priloader" ng-show="testing"></div>
-    <span class="label label-success" ng-show="testStatus == 1">Test OK <i class="glyphicon glyphicon-ok"></i></span>
-    <span class="label label-danger" ng-show="testStatus == -1">Test Failed <i class="glyphicon glyphicon-remove"></i></span>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="console"> Show console
-      </label>
-    </div>
-  </div>
-
-  <div class="console" ng-show="console == true">
-    <p ng-repeat="log in logs">
-      <span class="green">zoster</span>
-      <span class="white">:~</span>
-      <span class="magenta">$</span>
-      <span class="gray">{{log.msg}}</span>
-    </p>
   </div>
 
   <script src="/js/controller.js"></script>

@@ -25,9 +25,9 @@ angular.module('SchemeApp', [])
   $scope.testStatus = 0;
 
   var settings = {
-    size: 30,
+    size: 20,
     bgColor: false,
-    speed: 3,
+    speed: 5,
     className: "pri",
     color: "#337ab7"
   }
@@ -37,15 +37,22 @@ angular.module('SchemeApp', [])
     $scope.platform = plt == 'ios' ? 'ios' : 'android';
   }
   
-  $scope.config = {
+  $scope.config = {};
+
+  $scope.exampleConfig = {
     scheme : "zoster",
     host : "zoster",
     pkg: "com.urucas.zoster_testapp",
     action: "hello",
     params : [{name:"user", value:"vruno"}],
-    apk_upload: false
+    apk_upload: false,
+    wait4sdkEvent: false
   };
   
+  $scope.useExample = function(){
+    $scope.config = $scope.exampleConfig;
+  }
+
   $scope.addParam = function() {
     $scope.config.params.push({name:"", value:""});
   }

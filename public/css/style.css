@@ -1,5 +1,10 @@
 body{
   margin:8px;  
+  background-color:#222;
+}
+
+body div:first-child{
+  background-color:#fff;
 }
 
 textarea {
@@ -53,15 +58,15 @@ hr {
   background:#000;
   color:#ccc;
   font-size:1em;
-  min-height:300px;
+  min-height:400px;
   width:auto;
   margin-left:auto;
   margin-right:auto;
   padding:6px;
   overflow: scroll;
-  box-shadow: 0px 0px 6px 1px rgba(119, 119, 119, 0.75);
-  -moz-box-shadow: 0px 0px 6px 1px rgba(119, 119, 119, 0.75);
-  -webkit-box-shadow: 0px 0px 6px 1px rgba(119, 119, 119, 0.75);
+  box-shadow: 0px 0px 3px 1px rgba(119, 119, 119, 0.75);
+  -moz-box-shadow: 0px 0px 3px 1px rgba(119, 119, 119, 0.75);
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(119, 119, 119, 0.75);
   margin-bottom:15px;
 }
 
@@ -88,6 +93,7 @@ hr {
   padding-top:10px;
   padding-left:8px;
   margin-right:18px;
+  margin-bottom: 0px;
 }
 
 .board{
@@ -121,4 +127,14 @@ hr {
   color:#fff;
 }
 
+.nav-tabs a{
+  color:#ccc !important;  
+}
 
+.nav-tabs a:hover{
+  color:#222 !important;  
+}
+
+.nav-tabs li.active a{
+  color:#222 !important;  
+}
