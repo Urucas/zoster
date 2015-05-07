@@ -15,15 +15,11 @@ app.on('window-all-closed', function() {
 });
 
 app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width: 1032, height: 600});
 
   var zoster = require('./node/');
   var port = process.env.PORT || "5000"; 
-  var url  = [
-    'http://',
-    '0.0.0.0:',
-    port
-  ].join("");
+  var url  = ['http://','0.0.0.0:',port].join("");
   
   zoster(port).listen(port, '0.0.0.0', function(err){
       
@@ -33,8 +29,8 @@ app.on('ready', function() {
     mainWindow.on('closed', function() {
       mainWindow = null;
     });
-
-    mainWindow.openDevTools({detach:true});
+    
+    // mainWindow.openDevTools({detach:true});
 
   });
   
