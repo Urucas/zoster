@@ -16,7 +16,7 @@ app.on('window-all-closed', function() {
 
 app.on('ready', function() {
   
-  mainWindow = new BrowserWindow({width: 1032, height: 600});
+  mainWindow = new BrowserWindow({width: 1040, height: 600});
 
   var server = require('./server');
   server(false, function(data) {
