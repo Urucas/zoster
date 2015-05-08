@@ -4,7 +4,7 @@
   "description": "Android, ios, url, deeplinking, test, appium, adb, electronjs, native, chromium",
   "main": "electron.js",
   "scripts": {
-    "server": "make clean && make node && node server.js",
+    "server": "make clean && make node && ./bin/zoster --neutron",
     "prestart": "make clean && make node",
     "start": "./bin/zoster",
     "install": "make install && make node"
