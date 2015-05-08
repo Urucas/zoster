@@ -1,5 +1,5 @@
 # Zoster
-Deeplinking Scheme URL generator, tester for Android. In development.
+Url deeplinking automate testing for Android
 
 # Usage
 ```bash
@@ -25,7 +25,7 @@ zoster --neutron
 **iOS**
 * ideviceinstaller
 
-<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen.png?r=abc"/>
+<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen.png?r=1234"/>
 
 #TODO
 * Port to iOS
