@@ -4,8 +4,10 @@ Url deeplinking automate testing for Android
 # Usage
 ```bash
 git clone https://github.com/Urucas/zoster.git && cd zoster
+npm install
+
 npm start
-// run electron less
+// or run electron less, directly in your browser
 npm run server
 ```
 **or**
@@ -22,10 +24,13 @@ zoster --neutron
 **Android**
 * ADB
 
-**iOS**
-* ideviceinstaller
 
-<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen.png?r=1234"/>
+# Video example
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=jUOdHj5Io_A
+" target="_blank"><img src="http://img.youtube.com/vi/jUOdHj5Io_A/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="600" height="480" border="10" /></a>
+
 
 #TODO
+* Write documentation
 * Port to iOS
