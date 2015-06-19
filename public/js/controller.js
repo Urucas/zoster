@@ -1,5 +1,6 @@
 var socket = io();
 
+
 angular.module('SchemeApp', [])
 
 .filter('stringify', function() {
@@ -37,7 +38,16 @@ angular.module('SchemeApp', [])
     $scope.platform = plt == 'ios' ? 'ios' : 'android';
   }
   
-  $scope.config = {};
+  $scope.config = {
+    scheme : "",
+    host : "",
+    pkg: "",
+    action: "",
+    params : [],
+    apk_upload: false,
+    wait4sdkEvent: false,
+    test_site: "local"
+  };
 
   $scope.exampleConfig = {
     scheme : "zoster",
@@ -46,11 +56,23 @@ angular.module('SchemeApp', [])
     action: "hello",
     params : [{name:"user", value:"vruno"}],
     apk_upload: false,
-    wait4sdkEvent: false
+    wait4sdkEvent: false,
+    test_site: "local"
   };
+
+  $scope.exampleRaddiosConfig = {
+    scheme : "raddios",
+    host : "raddios",
+    pkg: "com.raddios",
+    action: "play",
+    params : [{name:"rid", value:"1"}],
+    apk_upload: false,
+    wait4sdkEvent: false,
+    test_site: "http://labs.urucas.com/raddios/"
+  }
   
   $scope.useExample = function(){
-    $scope.config = $scope.exampleConfig;
+    $scope.config = $scope.exampleRaddiosConfig;
   }
 
   $scope.addParam = function() {
@@ -94,13 +116,16 @@ angular.module('SchemeApp', [])
   $scope.error = "";
   $scope.validate = function() {
     
+    console.log($scope.config);
+    var config = angular.copy($scope.config);
+
     if($scope.platform == 'ios') {
       return false;
     }
 
-    if($scope.config.scheme == "") {
+    if(config.scheme == "") {
       $q("#scheme").popover('show');
-      return false; 
+      return false;
     }
 
     if($scope.config.host == "") {
@@ -111,6 +136,17 @@ angular.module('SchemeApp', [])
     if($scope.config.pkg == "") {
       $q("#package").popover('show');
       return false;
+    }
+    
+    $scope.config.test_site = 
+      $scope.config.test_site == "" ? "local" : $scope.config.test_site;
+    if($scope.config.test_site != "local") {
+      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+      var regex = new RegExp(expression);
+      if(!regex.test($scope.config.test_site)) {
+        $q("#test_site").popover('show');
+        return false;
+      }
     }
 
     return true;

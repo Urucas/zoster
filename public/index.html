@@ -10,9 +10,15 @@
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
 
-  <script>try { window.$ = window.jQuery = require('jquery/dist/jquery.min.js');}catch(e){}</script>
+  <!-- import jquery -->
+  <!-- workaround for jquery to be attached on electronjs window -->
+  <script>
+    try { 
+      window.$ = window.jQuery = require('jquery/dist/jquery.min.js');
+    }catch(e){}
+  </script>
   <script src="/jquery/dist/jquery.min.js"></script>
-
+  <!-- import jquery -->
 
   <script src="/angular/angular.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -21,9 +27,7 @@
   <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/zeroclipboard/dist/ZeroClipboard.min.js"></script>
   <script src="/js/jquery.form.min.js"></script>
-  
-  <script src="/js/priloader.js"></script>
-  
+    
 </head>
 
 <body ng-controller="SchemeController">
@@ -66,6 +70,11 @@
                 <input type="file" class="form-control" ng-disabled="!config.apk_upload" name="{{config.pkg}}" />
               </form>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="action">Url site test</label>
+            <input type="text" class="form-control" id="test_site" placeholder="Enter website to test" ng-model="config.test_site" data-toggle="popover" data-placement="right" data-content="Please enter a valid url or 'local' for local testing">
           </div>
 
           <div class="form-inline" ng-hide="1">
@@ -160,8 +169,8 @@
     </div>
   </div>
 
+  <script src="/js/priloader.js"></script>
   <script src="/js/controller.js"></script>
-
 
 </body>
 </html>
