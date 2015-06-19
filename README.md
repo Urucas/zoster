@@ -39,12 +39,14 @@ So, now we will have to fill the fields on the Zoster app
 (TODO - finish writting documentation saturday morning. It's happy hour)
 
 
+
 **Example video**
+
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=jUOdHj5Io_A
 " target="_blank"><img src="http://img.youtube.com/vi/jUOdHj5Io_A/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="600" height="480" border="10" /></a>
 
 
 #TODO
-* Write documentation
+* Finish writting documentation
 * Port to iOS
