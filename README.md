@@ -1,4 +1,4 @@
-# Zoster
+# Zoster <img src="https://raw.githubusercontent.com/Urucas/zoster/master/logo.png" />
 Url deeplinking automate testing for Android
 
 # Install
