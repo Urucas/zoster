@@ -35,17 +35,35 @@ Choosing **zoster** as scheme host and following [Android Developer Guide](https
 
 **intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end**
 
-Now, we'll fill the fields on the Zoster app, like: 
+Now, we'll fill the fields on the Zoster app, to create the intent url, like: 
+<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen1.png" />
 
+Click on the AndroidManifest.xml blue button to check this is correct;
+<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen3.png" />
 
+We can test the click on this ```intent browsable link``` locally or in your own server by settting the **URL site test**. Setting the ```local``` value, **Zoster** will create a temporary url with this link that will be clicked on our appium test. 
 
+Once, all the fields are filled, you can run the test. An this will in this actions:
+* Check you have an android connected via USB (There's no SIMULATOR support. yet)
+* Check the application is installed, if you set the .apk field, zoster will install it.
+* Check you have ```appium``` running. In case you forgot to run it; ```appium &```
+* Run the test; 
+  1. Open the URL Site test
+  2. Looks for the intent url link
+  3. Clicks on that link
+  4. Checks if your android application is opened
+  
 
-**Example video**
-
+If everythin goes right, the test will pass. Letting you know your intent url in your site and your android application are both well implemented.
+  
+Check out this video of **Zoster** running on an Nexus 5 using the example;
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=jUOdHj5Io_A
 " target="_blank"><img src="http://img.youtube.com/vi/jUOdHj5Io_A/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="600" height="480" border="10" /></a>
 
+That's all folks!
 
 #TODO
+* Write documentation
+* Implement Android SDK to test a complete flow.
 * Port to iOS
