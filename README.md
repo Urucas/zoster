@@ -31,12 +31,12 @@ When running **Zoster**, a desktop application will open with a set of fields(ho
 
 As an example we'll use a simple Android application that shows a "Hello, {$yourname}", where {$yourname} is passed via the browsable intent. You can check this .apk inside the example [folder](https://github.com/Urucas/zoster/tree/master/example) or the [source code](https://github.com/Urucas/zoster-testapp)
 
-Following [Android Developer Guide](https://developer.android.com/guide/components/intents-common.html#Browser) our final intent url will be:
+Choosing **zoster** as scheme host and following [Android Developer Guide](https://developer.android.com/guide/components/intents-common.html#Browser) our final intent url will be:
 
 **intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end**
 
-So, now we will have to fill the fields on the Zoster app
-(TODO - finish writting documentation saturday morning. It's happy hour)
+Now, we'll fill the fields on the Zoster app, like: 
+
 
 
 
@@ -48,5 +48,4 @@ alt="IMAGE ALT TEXT HERE" width="600" height="480" border="10" /></a>
 
 
 #TODO
-* Finish writting documentation
 * Port to iOS
