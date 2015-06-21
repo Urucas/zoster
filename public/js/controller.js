@@ -72,7 +72,7 @@ angular.module('SchemeApp', [])
   }
   
   $scope.useExample = function(){
-    $scope.config = $scope.exampleRaddiosConfig;
+    $scope.config = $scope.exampleConfig;
   }
 
   $scope.addParam = function() {
