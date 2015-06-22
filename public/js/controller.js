@@ -57,7 +57,8 @@ angular.module('SchemeApp', [])
     params : [{name:"user", value:"vruno"}],
     apk_upload: false,
     wait4sdkEvent: false,
-    test_site: "local"
+//    test_site: "local"
+    test_site: "http://labs.urucas.com/zoster"
   };
 
   $scope.exampleRaddiosConfig = {
