@@ -1,6 +1,11 @@
 'use strict'
-module.exports = function(neutron) {
-  if(neutron != undefined && neutron) {
+module.exports = function(options) {
+  if(options.caps) {
+    var server = require('./server');
+    server(false, null, options.caps);
+    return;
+  }
+  if(options.neutron) {
     // run zoster electron less
     var server = require('./server');
     server(true);

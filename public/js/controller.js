@@ -117,7 +117,6 @@ angular.module('SchemeApp', [])
   $scope.error = "";
   $scope.validate = function() {
     
-    console.log($scope.config);
     var config = angular.copy($scope.config);
 
     if($scope.platform == 'ios') {
