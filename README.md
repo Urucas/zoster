@@ -17,6 +17,9 @@ npm install -g zoster
 zoster
 // run electron less
 zoster --neutron
+
+// run test from cli
+zoster --test [path_to_capabilities]
 ```
 
 # Requirements
