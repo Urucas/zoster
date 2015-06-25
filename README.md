@@ -7,20 +7,25 @@ Url deeplinking automate testing for Android
 git clone https://github.com/Urucas/zoster.git && cd zoster
 npm install
 
+// run zoster desktop application
 npm start
-// or run electron less, directly in your browser
+// run zoster in your browser
 npm run server
+// run a test directly from cli
+npm start -- --test [path_to_capabilities]
 ```
 **or**
 ```bash
 npm install -g zoster
-zoster
-// run electron less
-zoster --neutron
 
-// run test from cli
+// run zoster desktop application
+zoster
+// run zoster in your browser
+zoster --neutron
+// run a test directly from cli
 zoster --test [path_to_capabilities]
 ```
+
 
 # Requirements
 * Appium
