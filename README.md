@@ -1,5 +1,5 @@
 <img src="https://raw.githubusercontent.com/Urucas/zoster/master/logo.png" />
-# Zoster 
+# Zoster [![Build Status](https://travis-ci.org/Urucas/zoster.svg?branch=master)](https://travis-ci.org/Urucas/zoster)
 Url deeplinking automate testing for Android
 
 # Install
