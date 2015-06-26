@@ -99,5 +99,19 @@ describe("Zoster instance tests", () => {
 
     done();
   })
+
+  it("Test get_devices method return", (done) => {
+    let z = zoster();
+    try {
+      let devices = z.get_devices();
+      if(!(devices instanceof Array))
+        throw new Error("Fail get_devices, returns wrong type(not array)");
+        
+    }catch(e){
+      if(e.message != "NO available devices, please connect your android!")
+        throw new Error("Fail get_devices, throwing un unkwown error");
+    }
+    done();
+  })
  
 });
