@@ -113,5 +113,90 @@ describe("Zoster instance tests", () => {
     }
     done();
   })
+
+  it("Test create_local_server_app creates app routes", (done) => {
+    let z = zoster();
+    let server = z.create_local_server_app();
+    let express = server.__express__;
+    let routes = express._router.stack;
+
+    // check express static is created
+    let flag = false;
+    for(let i=0;i<routes.length;i++) {
+      let route = routes[i];
+      if(route.name == "serveStatic") flag = true;
+    }
+    if(!flag) throw new Error("Method create_local_server_app fails to create static route");
+
+    // check main route is created
+    flag = false;
+    for(let i=0;i<routes.length;i++) {
+      let route = routes[i].route;
+      if(route == undefined) continue;
+      if(route.path == "/") flag = true;
+    }
+    if(!flag) throw new Error("Method create_local_server_app fails to create main route");
+
+    // check upload route is created
+    flag = false;
+    for(let i=0;i<routes.length;i++) {
+      let route = routes[i].route;
+      if(route == undefined) continue;
+      if(route.path == "/upload") flag = true;
+    }
+    if(!flag) throw new Error("Method create_local_server_app fails to create upload route");
+
+    done();
+  })
+
+  it("Test create_local_server_test_site creates local test route", (done) => {
+    let z = zoster();
+
+    try {
+      let server = z.create_local_server_test_site();
+    }catch(e) {
+      if(e.message != "Capabilities undefined")
+        throw new Error("Method create_local_server_test_site throw unkwown exception");
+    }
+    
+    try {
+      let server = z.create_local_server_test_site({});
+    }catch(e) {
+      if(e.message != "Capabilities intentURL undefined")
+        throw new Error("Method create_local_server_test_site throw unkwown exception");
+    }
+    
+    let caps_with_intenturl = caps;
+    caps.intentURL = "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end";
+    
+    // check test route is created when empty params
+    let server = z.create_local_server_test_site(caps_with_intenturl);
+    let express = server.__express__;
+    let routes = express._router.stack;
+    let flag = false;
+    for(let i=0;i<routes.length;i++) {
+      let route = routes[i].route;
+      if(route == undefined) continue;
+      if(route.path == "/test") flag = true;
+    }
+    if(!flag) 
+      throw new Error("Method create_local_server_app fails to create test route without params");
+
+    // check test route is created when added to existing server
+    server = z.create_local_server_app();
+    let server1 = z.create_local_server_test_site(caps_with_intenturl, server.__express__, server);
+    express = server1.__express__;
+    routes = express._router.stack;
+    flag = false;
+    for(let i=0;i<routes.length;i++) {
+      let route = routes[i].route;
+      if(route == undefined) continue;
+      if(route.path == "/test") flag = true;
+    }
+    if(!flag) 
+      throw new Error("Method create_local_server_app fails to create test route with params");
+
+    done();  
+  });
  
 });
