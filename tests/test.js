@@ -3,6 +3,26 @@ import caps from '../caps/zoster_testapp.json';
 
 describe("Zoster instance tests", () => {
 
+  it("Test Zoster instance structure", (done) => {
+    let z = zoster();
+    if(z == null || z == undefined || typeof z != "object")
+      throw new Error("Zoster function returns wrong object");
+    
+    let methods = [
+      "get_devices","exit_error", "install_apk", 
+      "is_package_installed", "stringify_params", "create_intent_url", 
+      "is_intenturl_ok", "check_min_capabilities", "test", 
+      "create_local_server_app", "create_local_server_test_site", 
+      "run_cli", "run_server", "run"
+    ];
+    for(let key in methods) {
+      let method = methods[key];
+      if(z[method] == undefined && typeof z[method] != "function")
+        throw new Error("Zoster instance missing method: "+method);
+    }
+    done();
+  });
+
   it("Test port is setted", (done) => {
     let z = zoster({port:'1234'});
     if(z.port != '1234') 
@@ -61,5 +81,23 @@ describe("Zoster instance tests", () => {
     done();
   });
 
+  it("Test check_min_capabilities method", (done) => {
+    let z = zoster();
+    if(z.check_min_capabilities({}) == true)
+      throw new Error("Fail check_min_capabilities, caps.pkg not setted and check_min_capabilities return true");
+    
+    if(z.check_min_capabilities({pkg:"com.urucas.zoster_testapp"}) == true)
+      throw new Error("Fail check_min_capabilities, caps.scheme not setted and check_min_capabilities return true");
+
+    if(z.check_min_capabilities({pkg:"com.urucas.zoster_testapp", scheme:"zoster"}) == true)
+      throw new Error("Fail check_min_capabilities, caps.action not setted and check_min_capabilities return true");
+
+    if(z.check_min_capabilities({pkg:"com.urucas.zoster_testapp", 
+        intentURL:"intent://zoster/hello?user=vruno#Intent;scheme=zosterpackage=com.urucas.zoster_testapp;end"}
+      ) == true)
+      throw new Error("Fail check_min_capabilities, caps.intentURL is bad url and check_min_capabilities return true");
+
+    done();
+  })
  
 });
