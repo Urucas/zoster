@@ -104,7 +104,7 @@ describe("Zoster instance tests", () => {
     let z = zoster();
     try {
       let devices = z.get_devices();
-      if(!(devices instanceof Array))
+      if(!Array.isArray(devices))
         throw new Error("Fail get_devices, returns wrong type(not array)");
         
     }catch(e){
