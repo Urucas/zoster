@@ -1,0 +1,8 @@
+{
+  "name": "zoster test suite",
+  "pkg": "com.urucas.zoster_testapp",
+  "action": "hello",
+  "params": [],
+  "apk_upload": false,
+  "test_site": "http://labs.urucas.com/zoster"
+}
