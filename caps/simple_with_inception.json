@@ -1,0 +1,11 @@
+{
+  "name": "simple test with inception",
+  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end",
+  "pkg" : "com.urucas.zoster_testapp",
+  "test_site": "http://labs.urucas.com/zoster",
+  "inception": { 
+    "name" : "check_name",
+    "path" : "./inception/test_name.js"
+  },
+  "params": [{"name": "user","value": "vruno"}]
+}

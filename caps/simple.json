@@ -1,0 +1,6 @@
+{
+  "name": "simple test",
+  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end",
+  "pkg" : "com.urucas.zoster_testapp",
+  "test_site": "http://labs.urucas.com/zoster"
+}
