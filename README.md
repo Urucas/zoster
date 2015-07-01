@@ -39,13 +39,13 @@ Inception is here. Zoster let you include your own appium test to run after the 
   "test_site": "http://labs.urucas.com/zoster",
   "inception": {
     "name" : "check_name",
-    "path" : "./inception/test_name.js"
+    "path" : "./examples/inception_test.js"
   }
 }
 ```
 and the inception test will look something like this,
 ```javascript
-// appium code inside ./inception/test_name.js
+// appium code inside ./examples/inception_test.js
 test_name = function(caps, driver, success, error) {
   var params = caps.params[0];
   var text_should_be = "Hello "+params.value+"!";
