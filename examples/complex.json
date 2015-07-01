@@ -5,5 +5,10 @@
   "action" : "hello",
   "params" : [{"name":"user", "value":"vruno"}],
   "pkg" : "com.urucas.zoster_testapp",
-  "test_site": "http://labs.urucas.com/zoster"
+  "test_site": "http://labs.urucas.com/zoster",
+  "apk_path" : "./examples/zoster_testapp.apk",
+  "inception": { 
+    "name" : "check_name",
+    "path" : "./examples/inception_test.js"
+  }
 }
