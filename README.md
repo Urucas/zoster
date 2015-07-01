@@ -15,8 +15,8 @@ To use this example with Zoster, we create the following capabilities:
 ```json
 {
   "name": "zoster test",
-  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end"
-  "pkg": "com.urucas.zoster_testapp", // your android application package name
+  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end",
+  "pkg" : "com.urucas.zoster_testapp",
   "test_site": "http://labs.urucas.com/zoster"
 }
 ```
@@ -34,8 +34,8 @@ Inception is here. Zoster let you include your own appium test to run after the 
 ```json
 {
   "name": "zoster test with inception",
-  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end"
-  pkg": "com.urucas.zoster_testapp",
+  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end",
+  "pkg" : "com.urucas.zoster_testapp",
   "test_site": "http://labs.urucas.com/zoster",
   "inception": {
     "name" : "check_name",
@@ -63,7 +63,7 @@ test_name = function(caps, driver, success, error) {
 }
 module.exports["check_name"] = test_name;
 ```
-Now, you have test that your browsable intent has opened your app and also test that the android application has shown the correct text. 
+Now, you have checked that your browsable intent has opened your app and also checked that the android application did some magic stuff.  
 
 # Install
 ```bash
