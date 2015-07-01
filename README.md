@@ -24,7 +24,7 @@ Wait, I dont have a site to test... yet. No worries, you can set```"test_site":"
 
 Next, we run zoster:
 ```bash
-zoster --test ./caps/zoster_testapp.json
+zoster --test ./examples/simple.json
 ```
 This simple test will check you have the link on the site provided, click on it and evaluate that your application opens.
 
