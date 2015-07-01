@@ -10,7 +10,7 @@ Testing that deep linking url works has always the same premise; open a website 
 **How?**
 
 Let's use an example. Following [Android Developer Guide](https://developer.android.com/guide/components/intents-common.html#Browser) we create an intent url, ```intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end``` 
-to use with our example android app.
+that will open our open application and send ```vruno``` as user param.
 To use this example with Zoster, we create the following capabilities:
 ```json
 {
@@ -63,7 +63,7 @@ test_name = function(caps, driver, success, error) {
 }
 module.exports["check_name"] = test_name;
 ```
-Now, you have checked that your browsable intent has opened your app and also checked that the android application did some magic stuff.  
+Now, you have checked that your browsable intent has opened your app and also checked that the android application did the magic stuff.  
 
 # Install
 ```bash
