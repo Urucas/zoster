@@ -1,6 +1,6 @@
 import zoster from '../lib/';
-import caps from '../example/simple.json';
-import complex_caps from '../example/complex.json';
+import caps from '../exampls/simple.json';
+import complex_caps from '../examples/complex.json';
 
 describe("Zoster instance tests", () => {
 
