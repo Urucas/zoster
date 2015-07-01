@@ -1,70 +1,80 @@
 <img src="https://raw.githubusercontent.com/Urucas/zoster/master/logo.png" />
 # Zoster [![Build Status](https://travis-ci.org/Urucas/zoster.svg?branch=master)](https://travis-ci.org/Urucas/zoster)
-Url deeplinking automate testing for Android
+
+Zoster is a simple way to automate deep linking url testing on Android, by simply setting a few capabilities and maybe writting some code. 
+
+**Why?**
+
+Testing that deep linking url works has always the same premise; open a website > click on a link > wait for an application to open > if it opens everything is ok. Zoster use a preseted appium test to automate this premise and test this for you.
+
+**How?**
+
+Let's use an example. Following [Android Developer Guide](https://developer.android.com/guide/components/intents-common.html#Browser) we create an intent url, ```intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end``` to use with our example android app.
+To use this example with Zoster, we create the following capabilities:
+```json
+{
+  "name": "zoster test",
+  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end"
+  "pkg": "com.urucas.zoster_testapp", // your android application package name
+  "test_site": "http://labs.urucas.com/zoster"
+}
+```
+Wait, I dont have a site to test... yet. No worries, you can set```"test_site":"local"``` in capabilities and Zoster will create a temporary server with your browsable intent url on an ```<a>``` element to click. 
+
+Next, we run zoster:
+```bash
+zoster --test ./caps/zoster_testapp.json
+```
+This simple test will check you have the link on the site provided, click on it and evaluate that your application opens.
+
+**What if dont just want to test my application opens after clicking on my browsable intent, I also want to test my application did some magic stuff ?**
+
+Inception is here. Zoster let you include your own appium test to run after the application opens, this way you can test the full flow of your browsable intent. 
+```json
+{
+  "name": "zoster test with inception",
+  "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end"
+  pkg": "com.urucas.zoster_testapp",
+  "test_site": "http://labs.urucas.com/zoster",
+  "inception": {
+    "name" : "check_name",
+    "path" : "./inception/test_name.js"
+  }
+}
+```
+and the inception test```(./inception/test_name.js)``` will look something like this,
+```javascript
+// appium code
+test_name = function(caps, driver, success, error) {
+  var params = caps.params[0];
+  var text_should_be = "Hello "+params.value+"!";
+  driver.elementById("com.urucas.zoster_testapp:id/textView", function(err, el) {
+    if(err) return error(err);
+    el.text(function(err, text){
+      if(err) return error(err);
+      if(text_should_be == text) {
+        success();
+      }else{
+        error(new Error("Test fails"));
+      }
+    });
+  });
+}
+module.exports["check_name"] = test_name;
+```
 
 # Install
 ```bash
-git clone https://github.com/Urucas/zoster.git && cd zoster
-npm install
-
-// run zoster desktop application
-npm start
-// run zoster in your browser
-npm run server
-// run a test directly from cli
-npm start -- --test [path_to_capabilities]
+npm install -g zoster
+zoster --test [path_to_capabilities]
 ```
 **or**
 ```bash
-npm install -g zoster
-
-// run zoster desktop application
-zoster
-// run zoster in your browser
-zoster --neutron
-// run a test directly from cli
-zoster --test [path_to_capabilities]
+git clone https://github.com/Urucas/zoster.git && cd zoster
+npm install
+npm start -- --test [path_to_capabilities]
 ```
-
 
 # Requirements
 * Appium
-
-**Android**
 * ADB
-
-#Usage
-```Zoster``` is a simple deeplink automation module. When running ```Zoster```, a desktop application(or local server) will open with a set of fields(host, params,...) where you can define a browsable intent url to be generated and testted by this module.
-
-As an example we'll use a simple Android application that shows a "Hello, {$yourname}", where {$yourname} is passed via the browsable intent. 
-
-Choosing **zoster** as scheme host and following [Android Developer Guide](https://developer.android.com/guide/components/intents-common.html#Browser) our final browsable intent url will be:
-
-**intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end**
-
-Now, we'll fill the fields on the ```Zoster``` app, to create the intent url, like: 
-<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen1.png" />
-
-Click on the AndroidManifest.xml blue button to check the generated intent URL is correct;
-<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen3.png" />
-
-We can test the click on this ```intent browsable link``` locally or in your own server by settting the **URL site test**. When setting ```local``` as the **URL site test** value, a temporary site will be created with a link to the intent URL.
-
-Once all the fields are filled, you can run the test, executing a set of actions:
-* Check you have an android connected via USB (There's no ```SIMULATOR``` support. yet)
-* Check the application is installed, if you set the .apk field, zoster will install it.
-* Check you have ```appium``` running. In case you forgot to run it; ```appium &```
-* Run the test; 
-  1. Open the URL Site test
-  2. Looks for the intent url link
-  3. Clicks on that link
-  4. Checks if your android application is opened
-  
-
-If everythin goes right, the test will pass. Letting you know your intent url in your site and your android application are both well implemented.
-  
-Check out this video of **Zoster** running on an Nexus 5 using the example;
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=jUOdHj5Io_A
-" target="_blank"><img src="http://img.youtube.com/vi/jUOdHj5Io_A/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="600" height="480" border="10" /></a>
-
