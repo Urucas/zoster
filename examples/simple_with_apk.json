@@ -1,11 +1,7 @@
 {
-  "name": "simple test with inception",
+  "name": "simple test with apk install",
   "intentURL" : "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end",
   "pkg" : "com.urucas.zoster_testapp",
   "test_site": "http://labs.urucas.com/zoster",
-  "inception": { 
-    "name" : "check_name",
-    "path" : "./examples/inception_test.js"
-  },
-  "params": [{"name": "user","value": "vruno"}]
+  "apk_path" : "./examples/zoster_testapp.apk"
 }
