@@ -1,0 +1,9 @@
+{
+  "name": "simple test",
+  "scheme" : "zoster",
+  "host" : "zoster",
+  "action" : "hello",
+  "params" : [{"name":"user", "value":"vruno"}],
+  "pkg" : "com.urucas.zoster_testapp",
+  "test_site": "http://labs.urucas.com/zoster"
+}

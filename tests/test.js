@@ -1,5 +1,6 @@
 import zoster from '../lib/';
 import caps from '../example/simple.json';
+import complex_caps from '../example/complex.json';
 
 describe("Zoster instance tests", () => {
 
@@ -62,8 +63,8 @@ describe("Zoster instance tests", () => {
   });
 
   it("Test create_intent_url method", (done) => {
-    let z = zoster({capabilities:caps});
-    if(z.create_intent_url(caps) != "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end")
+    let z = zoster({capabilities:complex_caps});
+    if(z.create_intent_url(complex_caps) != "intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end")
       throw new Error("Fail create_intent_url");
     done();
   });
