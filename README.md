@@ -43,9 +43,9 @@ Inception is here. Zoster let you include your own appium test to run after the 
   }
 }
 ```
-and the inception test```(./inception/test_name.js)``` will look something like this,
+and the inception test will look something like this,
 ```javascript
-// appium code
+// appium code inside ./inception/test_name.js
 test_name = function(caps, driver, success, error) {
   var params = caps.params[0];
   var text_should_be = "Hello "+params.value+"!";
