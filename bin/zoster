@@ -17,8 +17,7 @@ var options = {
 }
 
 if(options.test) {
-  var caps = require(__dirname+'/../'+options.test);
-  // TODO - validate test capabilitis
+  var caps = require(options.test);
   options.caps = caps;
 }
 exec(options);

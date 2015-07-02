@@ -9,6 +9,6 @@
   "apk_path" : "./examples/zoster_testapp.apk",
   "inception": { 
     "name" : "check_name",
-    "path" : "./examples/inception_test.js"
+    "path" : "/Users/vruno/Urucas/Node/zoster/examples/inception_test.js"
   }
 }

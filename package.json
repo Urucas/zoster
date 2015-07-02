@@ -1,14 +1,12 @@
 {
   "name": "zoster",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Android, ios, url, deeplinking, test, appium, adb, electronjs, native, chromium",
-  "main": "electron.js",
   "scripts": {
     "server": "make clean && make node && ./bin/zoster --neutron",
     "prestart": "make clean && make node",
     "start": "./bin/zoster",
     "build": "make clean && make node",
-    "install": "make install && make node",
     "test": "node_modules/mocha/bin/mocha tests/test.js --compilers js:babel/register --t 15s --require mocha-clean",
     "examples-tests" : "babel-node tests/test_examples.js"
   },
@@ -37,7 +35,6 @@
     "babel": "^5.1.10",
     "bootstrap": "^3.3.4",
     "colors": "^1.1.2",
-    "electron-prebuilt": "^0.25.2",
     "express": "^4.12.3",
     "internal-ip": "^1.0.0",
     "jquery": "^2.1.3",
