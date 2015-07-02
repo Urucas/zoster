@@ -9,7 +9,8 @@
     "start": "./bin/zoster",
     "build": "make clean && make node",
     "install": "make install && make node",
-    "test": "node_modules/mocha/bin/mocha tests/test.js --compilers js:babel/register --t 15s --require mocha-clean"
+    "test": "node_modules/mocha/bin/mocha tests/test.js --compilers js:babel/register --t 15s --require mocha-clean",
+    "examples-tests" : "babel-node tests/test_examples.js"
   },
   "preferGlobal": true,
   "repository": {
