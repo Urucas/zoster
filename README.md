@@ -66,6 +66,7 @@ test_name = function(caps, driver, success, error) {
 }
 module.exports["check_name"] = test_name;
 ```
+<img src="https://raw.githubusercontent.com/Urucas/zoster/master/screen.png" />
 Now, we have checked that our browsable intent has opened the Android app and also checked that the android application did the show the correct text.
 
 **Capabilities**
