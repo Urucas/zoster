@@ -1,6 +1,6 @@
 {
   "name": "zoster",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Android, ios, url, deeplinking, test, appium, adb, electronjs, native, chromium",
   "main": "electron.js",
   "scripts": {
