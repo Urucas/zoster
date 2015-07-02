@@ -33,7 +33,7 @@ This simple test will check you have the link on the site provided, click on it 
 
 Inception is here. Zoster let you include your own appium test to run after the application opens in native contexts, this way you can test the full flow of your browsable intent. 
 
-In this example, we said the user param will be setted in a ```TextView```, so to check the hole flow of the browsable intent, we'll inject a small test to check the ```TextView``` is setted correctly by setting the ```inception``` capability pointing to our inception test;
+In this example, we said the ```user``` param will be setted in a ```TextView```, so to check the hole flow we create a small test to check our ```TextView``` is setted correctly and include it by setting the ```inception``` capability,
 ```json
 {
   "name": "zoster test with inception",
@@ -46,7 +46,7 @@ In this example, we said the user param will be setted in a ```TextView```, so t
   }
 }
 ```
-our inception test will look like this;
+Our inception test will look like this,
 ```javascript
 // appium code inside ./examples/inception_test.js
 test_name = function(caps, driver, success, error) {
