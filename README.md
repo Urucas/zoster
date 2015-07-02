@@ -25,7 +25,7 @@ Wait, I dont have a site to test... yet. No worries, you can set```"test_site":"
 
 Next, we run zoster:
 ```bash
-zoster --test ./examples/simple.json
+zoster --test /examples/simple.json
 ```
 This simple test will check you have the link on the site provided, click on it and evaluate that your application opens.
 
@@ -42,13 +42,13 @@ In this example, we said the ```user``` param will be setted in a ```TextView```
   "test_site": "http://labs.urucas.com/zoster",
   "inception": {
     "name" : "check_name",
-    "path" : "./examples/inception_test.js"
+    "path" : "/examples/inception_test.js"
   }
 }
 ```
 Our inception test will look like this,
 ```javascript
-// appium code inside ./examples/inception_test.js
+// appium code inside /examples/inception_test.js
 test_name = function(caps, driver, success, error) {
   var params = caps.params[0];
   var text_should_be = "Hello "+params.value+"!";
@@ -74,10 +74,10 @@ Now, we have checked that our browsable intent has opened the Android app and al
   "name" : "your test name",
   "pkg"  : "your application package name",
   "intentURL" : "your browsable intent url",
-  "apk_path" "apk path to install before running the test",
+  "apk_path" "optional, full path to your apk to install before running the test", 
   "inception" : {
     "name" : "inception test name",
-    "path" : "path to your inception test"
+    "path" : "full path to your inception test"
   },
   "test_site" : "site url containing the browsable intent link"
 }
