@@ -25,7 +25,7 @@ Wait, I dont have a site to test... yet. No worries, you can set```"test_site":"
 
 Next, we run zoster:
 ```bash
-zoster --test /examples/simple.json
+zoster --test [FULL_PATH_TO_CAPABILITIES]
 ```
 This simple test will check you have the link on the site provided, click on it and evaluate that your application opens.
 
@@ -42,13 +42,13 @@ In this example, we said the ```user``` param will be setted in a ```TextView```
   "test_site": "http://labs.urucas.com/zoster",
   "inception": {
     "name" : "check_name",
-    "path" : "/examples/inception_test.js"
+    "path" : "[FULL_PATH_TO_TEST]"
   }
 }
 ```
 Our inception test will look like this,
 ```javascript
-// appium code inside /examples/inception_test.js
+// appium code inside test
 test_name = function(caps, driver, success, error) {
   var params = caps.params[0];
   var text_should_be = "Hello "+params.value+"!";
