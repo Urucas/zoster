@@ -1,12 +1,13 @@
 {
   "name": "zoster",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Android, ios, url, deeplinking, test, appium, adb, electronjs, native, chromium",
   "scripts": {
     "server": "make clean && make node && ./bin/zoster --neutron",
     "prestart": "make clean && make node",
     "start": "./bin/zoster",
     "build": "make clean && make node",
+    "install": "make clean && make node",
     "test": "node_modules/mocha/bin/mocha tests/test.js --compilers js:babel/register --t 15s --require mocha-clean",
     "examples-tests" : "babel-node tests/test_examples.js"
   },
