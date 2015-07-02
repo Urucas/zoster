@@ -89,13 +89,13 @@ Now, we have checked that our browsable intent has opened the Android app and al
 # Install
 ```bash
 npm install -g zoster
-zoster --test [path_to_capabilities]
+zoster --test [full_path_to_capabilities]
 ```
 **or**
 ```bash
 git clone https://github.com/Urucas/zoster.git && cd zoster
 npm install
-npm start -- --test [path_to_capabilities]
+npm start -- --test [full_path_to_capabilities]
 ```
 
 # Requirements
