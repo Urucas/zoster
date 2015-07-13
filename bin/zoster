@@ -11,6 +11,15 @@ var argv = require("optimist")
   })
   .argv;
 
+if(argv.help) {
+  console.log([
+    'zoster, deeplink automation for android',
+    'Usage: zoster --test [full_path_to_capabilities.json]',
+    'Check capabilities examples on https://github.com/Urucas/zoster/tree/master/examples'
+  ].join('\n'))
+  return;
+}
+
 var options = {
   neutron: argv.neutron,
   test: argv.test
