@@ -6,7 +6,7 @@
     "server": "npm run build && ./bin/zoster --neutron",
     "prestart": "standard && npm run build",
     "start": "./bin/zoster",
-    "build": "standard && ./node_modules/babel-cli/bin/babel.js lib -d node && ./links.js",
+    "build": "standard && ./node_modules/babel-cli/bin/babel.js lib -d node && ./link.js",
     "install": "npm run build",
     "test": "standard && ./node_modules/mocha/bin/mocha tests/* --compilers js:babel-core/register -t 15s",
     "examples-tests": "babel-node tests/test_examples.js",
